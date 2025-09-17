@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "3.1"
+metadata:
+  name: valgroup.com.zui5arteroto
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          #url: https://vhvmdwdqwd01.sap.valgroupco.com:44381
+          url: https://appdesenv.valgroupco.com/
+          client: '100'
+        app:
+          name: ZUI5_ARTE_ROTO
+          description: Controle de Artes Rotogravura
+          package: ZCONT_ARTE_ROTO_T1
+          transport: S4DK942462
+        exclude:
+          - /test/

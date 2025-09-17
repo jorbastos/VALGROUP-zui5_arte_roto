@@ -1,0 +1,107 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common" />
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI" />
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Communication.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication" />
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/ns/edm">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities" />
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/sap/ZPP_UI_ARTE_ROTOGRAVURA_02/$metadata">
+        <edmx:Include Namespace="cds_zpp_ui_arte_rotogravura" />
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local">
+            <Annotations Target="cds_zpp_ui_arte_rotogravura.ZPP_C_ART_CONJUGADAS_ROTOType/MaterialConjugado">
+                 <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zpp_ui_arte_rotogravura.ZPP_C_MAIN_REPORTType">
+                <Annotation Term="Common.SideEffects">
+                    <Record>
+                        <PropertyValue Property="SourceProperties">
+                            <Collection>
+                                <PropertyPath>ComentarioModif</PropertyPath>
+                                <PropertyPath>Conjugado</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="SourceEntities">
+                            <Collection>
+                                <NavigationPropertyPath>to_ARTEXMA</NavigationPropertyPath>
+                                <NavigationPropertyPath>to_CORES</NavigationPropertyPath>
+                                <NavigationPropertyPath>to_CONJUGADAS</NavigationPropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="TargetProperties">
+                            <Collection>
+                                <PropertyPath>DataUltModif</PropertyPath>
+                                <PropertyPath>UltModi</PropertyPath>
+                                <PropertyPath>Conjugado</PropertyPath>
+                                <PropertyPath>BtnCreateConjugadas</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="TargetEntities">
+                            <Collection>
+                                <NavigationPropertyPath>to_CONJUGADAS</NavigationPropertyPath>
+                                <NavigationPropertyPath>to_HISTORICO</NavigationPropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>              
+            </Annotations>                        
+            <Annotations Target="cds_zpp_ui_arte_rotogravura.cds_zpp_ui_arte_rotogravura_Entities/ZPP_C_MAIN_REPORT">            
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Path="UserCanEdit" />
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Path="UserCanEdit" />
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CONJUGADAS" />
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Path="BtnCreateConjugadas" />
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_ARTEXMA" />
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Path="UserCanEdit" />
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zpp_ui_arte_rotogravura.cds_zpp_ui_arte_rotogravura_Entities/ZPP_C_ARTEXMA_ROTO">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Path="to_Main/UserCanEdit" />
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zpp_ui_arte_rotogravura.cds_zpp_ui_arte_rotogravura_Entities/ZPP_C_ART_CONJUGADAS_ROTO">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Path="to_Main/UserCanEdit" />
+                    </Record>
+                </Annotation>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

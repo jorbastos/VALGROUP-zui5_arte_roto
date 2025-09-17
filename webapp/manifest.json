@@ -1,0 +1,214 @@
+{
+  "_version": "1.28.0",
+  "sap.app": {
+    "id": "valgroup.com.zui5arteroto",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.16.3",
+      "toolsId": "0b644daf-87ca-4953-b2f1-e59efb768234"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/sap/ZPP_UI_ARTE_ROTOGRAVURA_02/",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "ZPP_UI_ARTE_ROTOGRAVURA_02_VAN",
+            "annotation"
+          ],
+          "localUri": "localService/mainService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      },
+      "ZPP_UI_ARTE_ROTOGRAVURA_02_VAN": {
+        "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZPP_UI_ARTE_ROTOGRAVURA_02_VAN',Version='0001')/$value/",
+        "type": "ODataAnnotation",
+        "settings": {
+          "localUri": "localService/mainService/ZPP_UI_ARTE_ROTOGRAVURA_02_VAN.xml"
+        }
+      },
+      "annotation": {
+        "type": "ODataAnnotation",
+        "uri": "annotations/annotation.xml",
+        "settings": {
+          "localUri": "annotations/annotation.xml"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.84.50",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.ushell": {},
+        "sap.f": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.suite.ui.generic.template": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "valgroup.com.zui5arteroto.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "defaultBindingMode": "TwoWay",
+          "defaultCountMode": "Inline",
+          "refreshAfterChange": false,
+          "metadataUrlParams": {
+            "sap-value-list": "none"
+          }
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      },
+      "i18n|sap.suite.ui.generic.template.ListReport|ZPP_C_MAIN_REPORT": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/ListReport/ZPP_C_MAIN_REPORT/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [],
+      "targets": {}
+    },
+    "extends": {
+      "extensions": {
+        "sap.ui.controllerExtensions": {
+          "sap.suite.ui.generic.template.ObjectPage.view.Details": {
+            "controllerName": "valgroup.com.zui5arteroto.ext.controller.ObjectPageExt"
+          },
+          "sap.suite.ui.generic.template.ListReport.view.ListReport": {
+            "controllerName": "valgroup.com.zui5arteroto.ext.controller.ListReportExt",
+            "sap.ui.generic.app": {
+              "ZPP_C_MAIN_REPORT": {
+                "EntitySet": "ZPP_C_MAIN_REPORT"
+              }
+            }
+          }
+        },
+        "sap.ui.viewExtensions": {
+          "sap.suite.ui.generic.template.ObjectPage.view.Details": {
+            "ResponsiveTableColumnsExtension|ZPP_C_ARTEXMA_ROTO|material": {
+              "type": "XML",
+              "fragmentName": "valgroup.com.zui5arteroto.ext.fragment.AddColumn",
+              "className": "sap.ui.core.Fragment"
+            },
+            "ResponsiveTableCellsExtension|ZPP_C_ARTEXMA_ROTO|material": {
+              "fragmentName": "valgroup.com.zui5arteroto.ext.fragment.AddCell",
+              "className": "sap.ui.core.Fragment",
+              "type": "XML"
+            }
+          }
+        }
+      }
+    }
+  },
+  "sap.ui.generic.app": {
+    "_version": "1.3.0",
+    "settings": {
+      "forceGlobalRefresh": false,
+      "objectPageHeaderType": "Dynamic",
+      "considerAnalyticalParameters": true,
+      "showDraftToggle": false
+    },
+    "pages": {
+      "ListReport|ZPP_C_MAIN_REPORT": {
+        "entitySet": "ZPP_C_MAIN_REPORT",
+        "component": {
+          "name": "sap.suite.ui.generic.template.ListReport",
+          "list": true,
+          "settings": {
+            "condensedTableLayout": true,
+            "smartVariantManagement": true,
+            "enableTableFilterInPageVariant": true,
+            "filterSettings": {
+              "dateSettings": {
+                "useDateRange": true
+              }
+            },
+            "createWithFilters": {
+              "strategy": "extension"
+            },
+            "tableSettings": {
+              "type": "ResponsiveTable"
+            }
+          }
+        },
+        "pages": {
+          "ObjectPage|ZPP_C_MAIN_REPORT": {
+            "entitySet": "ZPP_C_MAIN_REPORT",
+            "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen",
+            "component": {
+              "name": "sap.suite.ui.generic.template.ObjectPage"
+            },
+            "pages": {
+              "ObjectPage|to_ARTEXMA": {
+                "navigationProperty": "to_ARTEXMA",
+                "entitySet": "ZPP_C_ARTEXMA_ROTO",
+                "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen",
+                "component": {
+                  "name": "sap.suite.ui.generic.template.ObjectPage"
+                }
+              },
+              "ObjectPage|to_CONJUGADAS": {
+                "navigationProperty": "to_CONJUGADAS",
+                "entitySet": "ZPP_C_ART_CONJUGADAS_ROTO",
+                "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen",
+                "component": {
+                  "name": "sap.suite.ui.generic.template.ObjectPage"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  }
+}

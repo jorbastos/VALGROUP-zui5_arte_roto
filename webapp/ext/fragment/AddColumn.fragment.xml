@@ -1,0 +1,20 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:table="sap.ui.table" xmlns="sap.m">
+    <Column id="FioriTools::ComCotas">
+        <Text text="{i18n>arteAprovadaCom1}"/>
+        <customData>
+            <core:CustomData key="p13nData" value="\{&quot;columnIndex&quot;: &quot;3&quot;, &quot;columnKey&quot;: &quot;ComCotas&quot;}"/>
+        </customData>
+    </Column>
+    <Column id="FioriTools::SemCotas">
+        <Text text="{i18n>arteAprovadaSem}"/>
+        <customData>
+            <core:CustomData key="p13nData" value="\{&quot;columnIndex&quot;: &quot;4&quot;, &quot;columnKey&quot;: &quot;SemCotas&quot;}"/>
+        </customData>
+    </Column>
+    <Column id="FioriTools::CorACor">
+        <Text text="{i18n>corACor}"/>
+        <customData>
+            <core:CustomData key="p13nData" value="\{&quot;columnIndex&quot;: &quot;5&quot;, &quot;columnKey&quot;: &quot;CorACor&quot;}"/>
+        </customData>
+    </Column>
+</core:FragmentDefinition>

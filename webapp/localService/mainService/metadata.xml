@@ -1,0 +1,773 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="https://VHVMDWDQWD01.SAP.VALGROUPCO.COM:44381/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://VHVMDWDQWD01.SAP.VALGROUPCO.COM:44381/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://VHVMDWDQWD01.SAP.VALGROUPCO.COM:44381/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://VHVMDWDQWD01.SAP.VALGROUPCO.COM:44381/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://VHVMDWDQWD01.SAP.VALGROUPCO.COM:44381/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://VHVMDWDQWD01.SAP.VALGROUPCO.COM:44381/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://VHVMDWDQWD01.SAP.VALGROUPCO.COM:44381/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://VHVMDWDQWD01.SAP.VALGROUPCO.COM:44381/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://VHVMDWDQWD01.SAP.VALGROUPCO.COM:44381/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="cds_zpp_ui_arte_rotogravura" xml:lang="pt" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="ZCDS_PP_ORDEM_VHType" sap:label="Value Help OP" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="OrderID"/>
+                </Key>
+                <Property Name="OrderID" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="Ordem de produção" sap:quickinfo="ID da ordem de produção"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Planta" sap:quickinfo="Centro de produção na ordem planejada"/>
+            </EntityType>
+            <EntityType Name="ZPP_C_ARTEXMA_ROTOType" sap:label="CDS Projection Atribuição material arte" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CodArte"/>
+                    <PropertyRef Name="RevArte"/>
+                    <PropertyRef Name="Centro"/>
+                    <PropertyRef Name="Matnr"/>
+                </Key>
+                <Property Name="Delete_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CodArte" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Arte" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="RevArte" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Revisão" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Centro" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Centro" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="18" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Nº do material" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="ProductDescription" Type="Edm.String" MaxLength="40" sap:label="Descrição do produto"/>
+                <Property Name="MaterialDescriptionByCustomer" Type="Edm.String" MaxLength="40" sap:label="Denominação cliente" sap:quickinfo="Denominação do material pelo cliente"/>
+                <NavigationProperty Name="to_Main" Relationship="cds_zpp_ui_arte_rotogravura.assoc_2E84A5C8558411DE4EE92E1597B3F804" FromRole="FromRole_assoc_2E84A5C8558411DE4EE92E1597B3F804" ToRole="ToRole_assoc_2E84A5C8558411DE4EE92E1597B3F804"/>
+            </EntityType>
+            <EntityType Name="ZPP_C_ART_CONJUGADAS_ROTOType" sap:label="CDS Conjugação de artes" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CodArte"/>
+                    <PropertyRef Name="RevArte"/>
+                    <PropertyRef Name="Centro"/>
+                </Key>
+                <Property Name="Delete_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CodArte" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Arte" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="RevArte" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Revisão" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Centro" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Centro" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="MaterialConjugado" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Material Conjugado" sap:quickinfo="Materia Conjugado" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="ProductDescription" Type="Edm.String" MaxLength="40" sap:label="Descrição do produto"/>
+                <Property Name="MaterialDescriptionByCustomer" Type="Edm.String" MaxLength="40" sap:label="Denominação cliente" sap:quickinfo="Denominação do material pelo cliente"/>
+                <NavigationProperty Name="to_Main" Relationship="cds_zpp_ui_arte_rotogravura.assoc_608B7DD342E85F0C8816D0383A811C24" FromRole="FromRole_assoc_608B7DD342E85F0C8816D0383A811C24" ToRole="ToRole_assoc_608B7DD342E85F0C8816D0383A811C24"/>
+            </EntityType>
+            <EntityType Name="ZPP_C_ART_CORES_ROTOType" sap:label="CDS Controle de Arte – Cores" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CodArte"/>
+                    <PropertyRef Name="RevArte"/>
+                    <PropertyRef Name="Centro"/>
+                    <PropertyRef Name="OrdCor"/>
+                </Key>
+                <Property Name="Update_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CodArte" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Arte" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="RevArte" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Revisão" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Centro" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Centro" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="OrdCor" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="NonNegative" sap:label="Seq. de Cor" sap:quickinfo="Sequência de Cor" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Cor" Type="Edm.String" MaxLength="20" sap:label="Cor" sap:value-list="fixed-values"/>
+                <Property Name="Detalhe" Type="Edm.String" MaxLength="30" sap:label="Detalhe da Cor" sap:value-list="fixed-values"/>
+                <Property Name="AreaCob" Type="Edm.Decimal" Precision="6" Scale="2" sap:label="Área de Cobertura" sap:quickinfo="Área de Cobertura (%)"/>
+                <Property Name="QtdCil" Type="Edm.String" MaxLength="3" sap:display-format="NonNegative" sap:label="Qtd de Cilindros Gra" sap:quickinfo="Qtd de Cilindros Gravados"/>
+                <NavigationProperty Name="to_Main" Relationship="cds_zpp_ui_arte_rotogravura.assoc_535E57C63143298BAD60284A8BAB08BB" FromRole="FromRole_assoc_535E57C63143298BAD60284A8BAB08BB" ToRole="ToRole_assoc_535E57C63143298BAD60284A8BAB08BB"/>
+            </EntityType>
+            <EntityType Name="ZPP_C_ART_HISTORICO_ROTOType" sap:label="CDS Controle de Artes - Histórico" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SapUuid"/>
+                </Key>
+                <Property Name="SapUuid" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="CodArte" Type="Edm.String" MaxLength="20" sap:label="Arte" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="RevArte" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Revisão" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Centro" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Centro" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Acao" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:text="textAcao" sap:label="Ação do Log"/>
+                <Property Name="Usuario" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Nome do usuário"/>
+                <Property Name="Timestamp" Type="Edm.DateTimeOffset" Precision="0" sap:label="Registro da hora" sap:quickinfo="Registro da hora UTC em forma breve (AAAAMMDDhhmmss)"/>
+                <Property Name="Motivo" Type="Edm.String" MaxLength="400" sap:label="Motivo"/>
+                <Property Name="Tabname" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Nome da tabela" sap:quickinfo="Nome tabela, 16 posições"/>
+                <Property Name="Fieldname" Type="Edm.String" MaxLength="30" sap:text="textFieldname" sap:label="Campo"/>
+                <Property Name="ValueOld" Type="Edm.String" MaxLength="400" sap:label="Valor Antigo"/>
+                <Property Name="ValueNew" Type="Edm.String" MaxLength="400" sap:label="Valor Novo"/>
+                <Property Name="OrdCor" Type="Edm.String" MaxLength="3" sap:display-format="NonNegative" sap:label="Seq. de Cor" sap:quickinfo="Sequência de Cor"/>
+                <Property Name="textFieldname" Type="Edm.String" MaxLength="60" sap:label="Descrição breve" sap:quickinfo="Descrição breve dos objetos Repository"/>
+                <Property Name="textAcao" Type="Edm.String" MaxLength="60"/>
+                <NavigationProperty Name="to_Main" Relationship="cds_zpp_ui_arte_rotogravura.assoc_1E9AD7B7BDF35849534B684B97FC1AF9" FromRole="FromRole_assoc_1E9AD7B7BDF35849534B684B97FC1AF9" ToRole="ToRole_assoc_1E9AD7B7BDF35849534B684B97FC1AF9"/>
+            </EntityType>
+            <EntityType Name="ZPP_C_ART_USER_AUTHORITYType" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="uname"/>
+                </Key>
+                <Property Name="uname" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="Nome do usuário"/>
+                <Property Name="createIsAllowed" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Valor verdadeiro" sap:quickinfo="Valor verdadeiro: verdadeiro/falso"/>
+            </EntityType>
+            <EntityType Name="ZPP_C_MAIN_REPORTType" sap:label="CDS Principal Controle Artes Rotogravura" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CodArte"/>
+                    <PropertyRef Name="RevArte"/>
+                    <PropertyRef Name="Centro"/>
+                </Key>
+                <Property Name="Delete_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Update_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="to_ARTEXMA_oc" Type="Edm.Boolean" sap:label="Dyn. AdA-Steuerung" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="to_CONJUGADAS_oc" Type="Edm.Boolean" sap:label="Dyn. AdA-Steuerung" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CodArte" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Arte" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="RevArte" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Revisão" sap:updatable="false"/>
+                <Property Name="Centro" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:filter-restriction="single-value" sap:required-in-filter="true" sap:label="Centro" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="UltModi" Type="Edm.String" MaxLength="12" sap:label="Último Modificador" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DataUltModif" Type="Edm.DateTimeOffset" Precision="7" sap:label="Data Última Modif." sap:quickinfo="Data Última Modificação" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="LibFatur" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Liberado Faturamento"/>
+                <Property Name="LibProd" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Liberado Produção"/>
+                <Property Name="OrigBloq" Type="Edm.String" MaxLength="15" sap:label="Origem Bloqueio" sap:value-list="fixed-values"/>
+                <Property Name="Conjugado" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Conjugada"/>
+                <Property Name="Cartela" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Gerar Cartela"/>
+                <Property Name="DataConfec" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Data Confecção Carte" sap:quickinfo="Data Confecção Cartela"/>
+                <Property Name="OpCartela" Type="Edm.String" MaxLength="12" sap:label="OP Confecção Cartela" sap:value-list="standard"/>
+                <Property Name="CartelaAprovClie" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Cartela Aprovada Cli" sap:quickinfo="Cartela Aprovada Cliente"/>
+                <Property Name="DataRetorno" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Data de Aprov. Cart" sap:quickinfo="Data de Aprovação da Cartela"/>
+                <Property Name="Minimo" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Mínimo"/>
+                <Property Name="Nominal" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Nominal"/>
+                <Property Name="Maximo" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Máximo"/>
+                <Property Name="DataLibCart" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Data Lib. Cartela" sap:quickinfo="Data Liberação Cartela"/>
+                <Property Name="CartelaAprov" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Cartela Aprov Int." sap:quickinfo="Cartela Aprovada Internamente"/>
+                <Property Name="CartelaReprov" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Cartela Reprovada In" sap:quickinfo="Cartela Reprovada Internamente"/>
+                <Property Name="BarCode" Type="Edm.String" MaxLength="13" sap:label="Código de Barras"/>
+                <Property Name="CampoObsResp" Type="Edm.String" MaxLength="400" sap:label="Obs. Restrição Arte" sap:quickinfo="Observações Restrição da Arte"/>
+                <Property Name="ObsProdRest" Type="Edm.String" MaxLength="400" sap:label="Obs. Rest. Prod." sap:quickinfo="Observações Restrição para Produção"/>
+                <Property Name="ObsDetProc" Type="Edm.String" MaxLength="400" sap:label="Detalh. Proc. e Alt." sap:quickinfo="Detalhes Processo e Alterações"/>
+                <Property Name="ObsGerais" Type="Edm.String" MaxLength="400" sap:label="Observações Gerais"/>
+                <Property Name="ComentarioModif" Type="Edm.String" MaxLength="400" sap:label="Comentário Modif." sap:quickinfo="Comentário Modificação"/>
+                <Property Name="DescFantasia" Type="Edm.String" MaxLength="40" sap:label="Descrição Fantasia"/>
+                <Property Name="QtdCilindros" Type="Edm.String" MaxLength="2" sap:display-format="NonNegative" sap:label="Quantidade de Cilind" sap:quickinfo="Quantidade de Cilindros"/>
+                <Property Name="UserCanEdit" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Valor verdadeiro" sap:quickinfo="Valor verdadeiro: verdadeiro/falso"/>
+                <Property Name="BtnCreateConjugadas" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Valor verdadeiro" sap:quickinfo="Valor verdadeiro: verdadeiro/falso"/>
+                <NavigationProperty Name="to_ARTEXMA" Relationship="cds_zpp_ui_arte_rotogravura.assoc_A4151ECAF5B65788BE26023DBE5105AA" FromRole="FromRole_assoc_A4151ECAF5B65788BE26023DBE5105AA" ToRole="ToRole_assoc_A4151ECAF5B65788BE26023DBE5105AA"/>
+                <NavigationProperty Name="to_CONJUGADAS" Relationship="cds_zpp_ui_arte_rotogravura.assoc_CCD238167727FE0BF37867FE914E8D7A" FromRole="FromRole_assoc_CCD238167727FE0BF37867FE914E8D7A" ToRole="ToRole_assoc_CCD238167727FE0BF37867FE914E8D7A"/>
+                <NavigationProperty Name="to_CORES" Relationship="cds_zpp_ui_arte_rotogravura.assoc_7F5EBC4B1387F9EB431B4E9305A472D5" FromRole="FromRole_assoc_7F5EBC4B1387F9EB431B4E9305A472D5" ToRole="ToRole_assoc_7F5EBC4B1387F9EB431B4E9305A472D5"/>
+                <NavigationProperty Name="to_HISTORICO" Relationship="cds_zpp_ui_arte_rotogravura.assoc_2774C0A86F6A80E70A996D41B890F4DE" FromRole="FromRole_assoc_2774C0A86F6A80E70A996D41B890F4DE" ToRole="ToRole_assoc_2774C0A86F6A80E70A996D41B890F4DE"/>
+            </EntityType>
+            <EntityType Name="ZPP_I_ART_ARQUIVO_ROTOType" sap:label="CDS Buscar Arquivo DMS Arte Rotogravura" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="p_matnr"/>
+                    <PropertyRef Name="p_tipo"/>
+                    <PropertyRef Name="filename"/>
+                </Key>
+                <Property Name="p_matnr" Type="Edm.String" Nullable="false" MaxLength="40" sap:display-format="UpperCase" sap:label="Material"/>
+                <Property Name="p_tipo" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Tipo de Arquivo Roto"/>
+                <Property Name="filename" Type="Edm.String" Nullable="false" MaxLength="100"/>
+                <Property Name="minetype" Type="Edm.String" MaxLength="100"/>
+                <Property Name="attachment" Type="Edm.Binary"/>
+                <NavigationProperty Name="Parameters" Relationship="cds_zpp_ui_arte_rotogravura.assoc_324DBA7662159ADD7B502343EBF16AC6" FromRole="ToRole_assoc_324DBA7662159ADD7B502343EBF16AC6" ToRole="FromRole_assoc_324DBA7662159ADD7B502343EBF16AC6" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZPP_I_ART_ARQUIVO_ROTOParameters" sap:semantics="parameters" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="p_matnr"/>
+                    <PropertyRef Name="p_tipo"/>
+                </Key>
+                <Property Name="p_matnr" Type="Edm.String" Nullable="false" MaxLength="40" sap:display-format="UpperCase" sap:parameter="mandatory" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="p_tipo" Type="Edm.String" Nullable="false" MaxLength="3" sap:parameter="mandatory" sap:label="Tipo de Arquivo Roto" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="Set" Relationship="cds_zpp_ui_arte_rotogravura.assoc_324DBA7662159ADD7B502343EBF16AC6" FromRole="FromRole_assoc_324DBA7662159ADD7B502343EBF16AC6" ToRole="ToRole_assoc_324DBA7662159ADD7B502343EBF16AC6"/>
+            </EntityType>
+            <EntityType Name="ZPP_I_ART_EDICAO_CONTROLE_ARTEType" sap:label="CDS Edição Controle de Artes" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CharacteristicValue"/>
+                </Key>
+                <Property Name="CharacteristicValue" Type="Edm.String" Nullable="false" MaxLength="70" sap:label="Usuario Modificação" sap:quickinfo="Valor da característica"/>
+            </EntityType>
+            <EntityType Name="ZPP_I_ART_MATNR_CONJUGADO_ROTOType" sap:label="CDS Controle de Artes - Materiais Conjugados" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Plant"/>
+                    <PropertyRef Name="Material"/>
+                </Key>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Centro"/>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="18" sap:display-format="UpperCase" sap:label="Material Conjugado" sap:quickinfo="Materia Conjugado"/>
+                <Property Name="ProductDescription" Type="Edm.String" MaxLength="40" sap:label="Descrição do produto"/>
+                <Property Name="MaterialDescriptionByCustomer" Type="Edm.String" MaxLength="40" sap:label="Denominação cliente" sap:quickinfo="Denominação do material pelo cliente"/>
+            </EntityType>
+            <EntityType Name="ZPP_I_ART_VALUE_HELP_CORType" sap:label="CDS Value Help Cor" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CharacteristicValue"/>
+                </Key>
+                <Property Name="CharacteristicValue" Type="Edm.String" Nullable="false" MaxLength="70" sap:text="textValue" sap:label="Cor" sap:quickinfo="Valor da característica"/>
+                <Property Name="textValue" Type="Edm.String" MaxLength="30"/>
+            </EntityType>
+            <EntityType Name="ZPP_I_ART_VALUE_HELP_DETA_CORType" sap:label="CDS Value Help Detalhe Cor" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CharacteristicValue"/>
+                </Key>
+                <Property Name="CharacteristicValue" Type="Edm.String" Nullable="false" MaxLength="70" sap:text="textValue" sap:label="Detalhe Cor" sap:quickinfo="Valor da característica"/>
+                <Property Name="textValue" Type="Edm.String" MaxLength="30"/>
+            </EntityType>
+            <EntityType Name="ZPP_I_ART_VALUE_HELP_ORIG_BLOQType" sap:label="CDS Value Help Origem Bloqueio" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CharacteristicValue"/>
+                </Key>
+                <Property Name="CharacteristicValue" Type="Edm.String" Nullable="false" MaxLength="70" sap:label="Origem do Bloqueio" sap:quickinfo="Valor da característica"/>
+            </EntityType>
+            <EntityType Name="ZPP_I_ART_VALUE_HELP_ROTOType" sap:label="CDS Value Help Controle de Artes Rotogravura" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CodArte"/>
+                    <PropertyRef Name="RevArte"/>
+                    <PropertyRef Name="Centro"/>
+                    <PropertyRef Name="Product"/>
+                </Key>
+                <Property Name="CodArte" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Arte"/>
+                <Property Name="RevArte" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Revisão"/>
+                <Property Name="Centro" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Centro"/>
+                <Property Name="Product" Type="Edm.String" Nullable="false" MaxLength="18" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Nº do material"/>
+                <Property Name="ProductDescription" Type="Edm.String" MaxLength="40" sap:label="Descrição do produto"/>
+                <Property Name="MaterialDescriptionByCustomer" Type="Edm.String" MaxLength="40" sap:label="Denominação cliente" sap:quickinfo="Denominação do material pelo cliente"/>
+            </EntityType>
+            <EntityType Name="ZPP_I_ART_VH_MATNR_PLANT_ROTOType" sap:label="CDS Controle de Artes - Value Help para Material por Centro" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Matnr"/>
+                    <PropertyRef Name="Centro"/>
+                </Key>
+                <Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="18" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Nº do material"/>
+                <Property Name="Centro" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Centro"/>
+                <Property Name="ProductName" Type="Edm.String" MaxLength="40" sap:label="Descrição do produto"/>
+            </EntityType>
+            <EntityType Name="ZZ1_PP_PLANTVType" sap:label="PP_PLANTV" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Plant"/>
+                </Key>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:required-in-filter="false" sap:label="Centro"/>
+                <Property Name="PlantName" Type="Edm.String" MaxLength="30" sap:required-in-filter="false" sap:label="Nome do centro"/>
+            </EntityType>
+            <Association Name="assoc_A4151ECAF5B65788BE26023DBE5105AA" sap:content-version="1">
+                <End Type="cds_zpp_ui_arte_rotogravura.ZPP_C_MAIN_REPORTType" Multiplicity="1" Role="FromRole_assoc_A4151ECAF5B65788BE26023DBE5105AA">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="cds_zpp_ui_arte_rotogravura.ZPP_C_ARTEXMA_ROTOType" Multiplicity="*" Role="ToRole_assoc_A4151ECAF5B65788BE26023DBE5105AA"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_A4151ECAF5B65788BE26023DBE5105AA">
+                        <PropertyRef Name="Centro"/>
+                        <PropertyRef Name="RevArte"/>
+                        <PropertyRef Name="CodArte"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_A4151ECAF5B65788BE26023DBE5105AA">
+                        <PropertyRef Name="Centro"/>
+                        <PropertyRef Name="RevArte"/>
+                        <PropertyRef Name="CodArte"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_CCD238167727FE0BF37867FE914E8D7A" sap:content-version="1">
+                <End Type="cds_zpp_ui_arte_rotogravura.ZPP_C_MAIN_REPORTType" Multiplicity="1" Role="FromRole_assoc_CCD238167727FE0BF37867FE914E8D7A">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="cds_zpp_ui_arte_rotogravura.ZPP_C_ART_CONJUGADAS_ROTOType" Multiplicity="*" Role="ToRole_assoc_CCD238167727FE0BF37867FE914E8D7A"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_CCD238167727FE0BF37867FE914E8D7A">
+                        <PropertyRef Name="Centro"/>
+                        <PropertyRef Name="RevArte"/>
+                        <PropertyRef Name="CodArte"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_CCD238167727FE0BF37867FE914E8D7A">
+                        <PropertyRef Name="Centro"/>
+                        <PropertyRef Name="RevArte"/>
+                        <PropertyRef Name="CodArte"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_7F5EBC4B1387F9EB431B4E9305A472D5" sap:content-version="1">
+                <End Type="cds_zpp_ui_arte_rotogravura.ZPP_C_MAIN_REPORTType" Multiplicity="1" Role="FromRole_assoc_7F5EBC4B1387F9EB431B4E9305A472D5">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="cds_zpp_ui_arte_rotogravura.ZPP_C_ART_CORES_ROTOType" Multiplicity="*" Role="ToRole_assoc_7F5EBC4B1387F9EB431B4E9305A472D5"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_7F5EBC4B1387F9EB431B4E9305A472D5">
+                        <PropertyRef Name="Centro"/>
+                        <PropertyRef Name="RevArte"/>
+                        <PropertyRef Name="CodArte"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_7F5EBC4B1387F9EB431B4E9305A472D5">
+                        <PropertyRef Name="Centro"/>
+                        <PropertyRef Name="RevArte"/>
+                        <PropertyRef Name="CodArte"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_2774C0A86F6A80E70A996D41B890F4DE" sap:content-version="1">
+                <End Type="cds_zpp_ui_arte_rotogravura.ZPP_C_MAIN_REPORTType" Multiplicity="1" Role="FromRole_assoc_2774C0A86F6A80E70A996D41B890F4DE">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="cds_zpp_ui_arte_rotogravura.ZPP_C_ART_HISTORICO_ROTOType" Multiplicity="*" Role="ToRole_assoc_2774C0A86F6A80E70A996D41B890F4DE"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_2774C0A86F6A80E70A996D41B890F4DE">
+                        <PropertyRef Name="Centro"/>
+                        <PropertyRef Name="RevArte"/>
+                        <PropertyRef Name="CodArte"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_2774C0A86F6A80E70A996D41B890F4DE">
+                        <PropertyRef Name="Centro"/>
+                        <PropertyRef Name="RevArte"/>
+                        <PropertyRef Name="CodArte"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_1E9AD7B7BDF35849534B684B97FC1AF9" sap:content-version="1">
+                <End Type="cds_zpp_ui_arte_rotogravura.ZPP_C_ART_HISTORICO_ROTOType" Multiplicity="1" Role="FromRole_assoc_1E9AD7B7BDF35849534B684B97FC1AF9"/>
+                <End Type="cds_zpp_ui_arte_rotogravura.ZPP_C_MAIN_REPORTType" Multiplicity="1" Role="ToRole_assoc_1E9AD7B7BDF35849534B684B97FC1AF9"/>
+            </Association>
+            <Association Name="assoc_608B7DD342E85F0C8816D0383A811C24" sap:content-version="1">
+                <End Type="cds_zpp_ui_arte_rotogravura.ZPP_C_ART_CONJUGADAS_ROTOType" Multiplicity="1" Role="FromRole_assoc_608B7DD342E85F0C8816D0383A811C24"/>
+                <End Type="cds_zpp_ui_arte_rotogravura.ZPP_C_MAIN_REPORTType" Multiplicity="1" Role="ToRole_assoc_608B7DD342E85F0C8816D0383A811C24"/>
+            </Association>
+            <Association Name="assoc_535E57C63143298BAD60284A8BAB08BB" sap:content-version="1">
+                <End Type="cds_zpp_ui_arte_rotogravura.ZPP_C_ART_CORES_ROTOType" Multiplicity="1" Role="FromRole_assoc_535E57C63143298BAD60284A8BAB08BB"/>
+                <End Type="cds_zpp_ui_arte_rotogravura.ZPP_C_MAIN_REPORTType" Multiplicity="1" Role="ToRole_assoc_535E57C63143298BAD60284A8BAB08BB"/>
+            </Association>
+            <Association Name="assoc_2E84A5C8558411DE4EE92E1597B3F804" sap:content-version="1">
+                <End Type="cds_zpp_ui_arte_rotogravura.ZPP_C_ARTEXMA_ROTOType" Multiplicity="1" Role="FromRole_assoc_2E84A5C8558411DE4EE92E1597B3F804"/>
+                <End Type="cds_zpp_ui_arte_rotogravura.ZPP_C_MAIN_REPORTType" Multiplicity="1" Role="ToRole_assoc_2E84A5C8558411DE4EE92E1597B3F804"/>
+            </Association>
+            <Association Name="assoc_324DBA7662159ADD7B502343EBF16AC6" sap:content-version="1">
+                <End Type="cds_zpp_ui_arte_rotogravura.ZPP_I_ART_ARQUIVO_ROTOParameters" Multiplicity="1" Role="FromRole_assoc_324DBA7662159ADD7B502343EBF16AC6"/>
+                <End Type="cds_zpp_ui_arte_rotogravura.ZPP_I_ART_ARQUIVO_ROTOType" Multiplicity="*" Role="ToRole_assoc_324DBA7662159ADD7B502343EBF16AC6"/>
+            </Association>
+            <EntityContainer Name="cds_zpp_ui_arte_rotogravura_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZCDS_PP_ORDEM_VH" EntityType="cds_zpp_ui_arte_rotogravura.ZCDS_PP_ORDEM_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZPP_C_ARTEXMA_ROTO" EntityType="cds_zpp_ui_arte_rotogravura.ZPP_C_ARTEXMA_ROTOType" sap:updatable="false" sap:content-version="1" sap:deletable-path="Delete_mc"/>
+                <EntitySet Name="ZPP_C_ART_CONJUGADAS_ROTO" EntityType="cds_zpp_ui_arte_rotogravura.ZPP_C_ART_CONJUGADAS_ROTOType" sap:updatable="false" sap:content-version="1" sap:deletable-path="Delete_mc"/>
+                <EntitySet Name="ZPP_C_ART_CORES_ROTO" EntityType="cds_zpp_ui_arte_rotogravura.ZPP_C_ART_CORES_ROTOType" sap:creatable="false" sap:deletable="false" sap:content-version="1" sap:updatable-path="Update_mc"/>
+                <EntitySet Name="ZPP_C_ART_HISTORICO_ROTO" EntityType="cds_zpp_ui_arte_rotogravura.ZPP_C_ART_HISTORICO_ROTOType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZPP_C_ART_USER_AUTHORITY" EntityType="cds_zpp_ui_arte_rotogravura.ZPP_C_ART_USER_AUTHORITYType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZPP_C_MAIN_REPORT" EntityType="cds_zpp_ui_arte_rotogravura.ZPP_C_MAIN_REPORTType" sap:requires-filter="true" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
+                <EntitySet Name="ZPP_I_ART_ARQUIVO_ROTOSet" EntityType="cds_zpp_ui_arte_rotogravura.ZPP_I_ART_ARQUIVO_ROTOType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZPP_I_ART_ARQUIVO_ROTO" EntityType="cds_zpp_ui_arte_rotogravura.ZPP_I_ART_ARQUIVO_ROTOParameters" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ZPP_I_ART_EDICAO_CONTROLE_ARTE" EntityType="cds_zpp_ui_arte_rotogravura.ZPP_I_ART_EDICAO_CONTROLE_ARTEType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZPP_I_ART_MATNR_CONJUGADO_ROTO" EntityType="cds_zpp_ui_arte_rotogravura.ZPP_I_ART_MATNR_CONJUGADO_ROTOType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZPP_I_ART_VALUE_HELP_COR" EntityType="cds_zpp_ui_arte_rotogravura.ZPP_I_ART_VALUE_HELP_CORType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZPP_I_ART_VALUE_HELP_DETA_COR" EntityType="cds_zpp_ui_arte_rotogravura.ZPP_I_ART_VALUE_HELP_DETA_CORType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZPP_I_ART_VALUE_HELP_ORIG_BLOQ" EntityType="cds_zpp_ui_arte_rotogravura.ZPP_I_ART_VALUE_HELP_ORIG_BLOQType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZPP_I_ART_VALUE_HELP_ROTO" EntityType="cds_zpp_ui_arte_rotogravura.ZPP_I_ART_VALUE_HELP_ROTOType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZPP_I_ART_VH_MATNR_PLANT_ROTO" EntityType="cds_zpp_ui_arte_rotogravura.ZPP_I_ART_VH_MATNR_PLANT_ROTOType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZZ1_PP_PLANTV" EntityType="cds_zpp_ui_arte_rotogravura.ZZ1_PP_PLANTVType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <AssociationSet Name="assoc_A4151ECAF5B65788BE26023DBE5105AA" Association="cds_zpp_ui_arte_rotogravura.assoc_A4151ECAF5B65788BE26023DBE5105AA" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZPP_C_MAIN_REPORT" Role="FromRole_assoc_A4151ECAF5B65788BE26023DBE5105AA"/>
+                    <End EntitySet="ZPP_C_ARTEXMA_ROTO" Role="ToRole_assoc_A4151ECAF5B65788BE26023DBE5105AA"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_1E9AD7B7BDF35849534B684B97FC1AF9" Association="cds_zpp_ui_arte_rotogravura.assoc_1E9AD7B7BDF35849534B684B97FC1AF9" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZPP_C_ART_HISTORICO_ROTO" Role="FromRole_assoc_1E9AD7B7BDF35849534B684B97FC1AF9"/>
+                    <End EntitySet="ZPP_C_MAIN_REPORT" Role="ToRole_assoc_1E9AD7B7BDF35849534B684B97FC1AF9"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_535E57C63143298BAD60284A8BAB08BB" Association="cds_zpp_ui_arte_rotogravura.assoc_535E57C63143298BAD60284A8BAB08BB" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZPP_C_ART_CORES_ROTO" Role="FromRole_assoc_535E57C63143298BAD60284A8BAB08BB"/>
+                    <End EntitySet="ZPP_C_MAIN_REPORT" Role="ToRole_assoc_535E57C63143298BAD60284A8BAB08BB"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_608B7DD342E85F0C8816D0383A811C24" Association="cds_zpp_ui_arte_rotogravura.assoc_608B7DD342E85F0C8816D0383A811C24" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZPP_C_ART_CONJUGADAS_ROTO" Role="FromRole_assoc_608B7DD342E85F0C8816D0383A811C24"/>
+                    <End EntitySet="ZPP_C_MAIN_REPORT" Role="ToRole_assoc_608B7DD342E85F0C8816D0383A811C24"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_2774C0A86F6A80E70A996D41B890F4DE" Association="cds_zpp_ui_arte_rotogravura.assoc_2774C0A86F6A80E70A996D41B890F4DE" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZPP_C_MAIN_REPORT" Role="FromRole_assoc_2774C0A86F6A80E70A996D41B890F4DE"/>
+                    <End EntitySet="ZPP_C_ART_HISTORICO_ROTO" Role="ToRole_assoc_2774C0A86F6A80E70A996D41B890F4DE"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_7F5EBC4B1387F9EB431B4E9305A472D5" Association="cds_zpp_ui_arte_rotogravura.assoc_7F5EBC4B1387F9EB431B4E9305A472D5" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZPP_C_MAIN_REPORT" Role="FromRole_assoc_7F5EBC4B1387F9EB431B4E9305A472D5"/>
+                    <End EntitySet="ZPP_C_ART_CORES_ROTO" Role="ToRole_assoc_7F5EBC4B1387F9EB431B4E9305A472D5"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_324DBA7662159ADD7B502343EBF16AC6" Association="cds_zpp_ui_arte_rotogravura.assoc_324DBA7662159ADD7B502343EBF16AC6" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZPP_I_ART_ARQUIVO_ROTO" Role="FromRole_assoc_324DBA7662159ADD7B502343EBF16AC6"/>
+                    <End EntitySet="ZPP_I_ART_ARQUIVO_ROTOSet" Role="ToRole_assoc_324DBA7662159ADD7B502343EBF16AC6"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_CCD238167727FE0BF37867FE914E8D7A" Association="cds_zpp_ui_arte_rotogravura.assoc_CCD238167727FE0BF37867FE914E8D7A" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZPP_C_MAIN_REPORT" Role="FromRole_assoc_CCD238167727FE0BF37867FE914E8D7A"/>
+                    <End EntitySet="ZPP_C_ART_CONJUGADAS_ROTO" Role="ToRole_assoc_CCD238167727FE0BF37867FE914E8D7A"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_2E84A5C8558411DE4EE92E1597B3F804" Association="cds_zpp_ui_arte_rotogravura.assoc_2E84A5C8558411DE4EE92E1597B3F804" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZPP_C_ARTEXMA_ROTO" Role="FromRole_assoc_2E84A5C8558411DE4EE92E1597B3F804"/>
+                    <End EntitySet="ZPP_C_MAIN_REPORT" Role="ToRole_assoc_2E84A5C8558411DE4EE92E1597B3F804"/>
+                </AssociationSet>
+            </EntityContainer>
+            <Annotations Target="cds_zpp_ui_arte_rotogravura.ZPP_C_ARTEXMA_ROTOType/Matnr" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String=""/>
+                        <PropertyValue Property="CollectionPath" String="ZPP_I_ART_VH_MATNR_PLANT_ROTO"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Matnr"/>
+                                    <PropertyValue Property="ValueListProperty" String="Matnr"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Centro"/>
+                                    <PropertyValue Property="ValueListProperty" String="Centro"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ProductName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Core.Immutable"/>
+            </Annotations>
+            <Annotations Target="cds_zpp_ui_arte_rotogravura.ZPP_C_ART_CONJUGADAS_ROTOType/MaterialConjugado" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String=""/>
+                        <PropertyValue Property="CollectionPath" String="ZPP_I_ART_MATNR_CONJUGADO_ROTO"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Centro"/>
+                                    <PropertyValue Property="ValueListProperty" String="Plant"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="MaterialConjugado"/>
+                                    <PropertyValue Property="ValueListProperty" String="Material"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ProductDescription"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="MaterialDescriptionByCustomer"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Core.Immutable"/>
+            </Annotations>
+            <Annotations Target="cds_zpp_ui_arte_rotogravura.ZPP_C_ART_CORES_ROTOType/Cor" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String=""/>
+                        <PropertyValue Property="CollectionPath" String="ZPP_I_ART_VALUE_HELP_COR"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Cor"/>
+                                    <PropertyValue Property="ValueListProperty" String="CharacteristicValue"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="textValue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zpp_ui_arte_rotogravura.ZPP_C_ART_CORES_ROTOType/Detalhe" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String=""/>
+                        <PropertyValue Property="CollectionPath" String="ZPP_I_ART_VALUE_HELP_DETA_COR"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Detalhe"/>
+                                    <PropertyValue Property="ValueListProperty" String="CharacteristicValue"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="textValue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zpp_ui_arte_rotogravura.ZPP_C_MAIN_REPORTType/CodArte" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String=""/>
+                        <PropertyValue Property="CollectionPath" String="ZPP_I_ART_VALUE_HELP_ROTO"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CodArte"/>
+                                    <PropertyValue Property="ValueListProperty" String="CodArte"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="RevArte"/>
+                                    <PropertyValue Property="ValueListProperty" String="RevArte"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Centro"/>
+                                    <PropertyValue Property="ValueListProperty" String="Centro"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Product"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="ProductDescription"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="MaterialDescriptionByCustomer"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+                <Annotation Term="Core.Immutable"/>
+            </Annotations>
+            <Annotations Target="cds_zpp_ui_arte_rotogravura.ZPP_C_MAIN_REPORTType/Centro" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String=""/>
+                        <PropertyValue Property="CollectionPath" String="ZZ1_PP_PLANTV"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Centro"/>
+                                    <PropertyValue Property="ValueListProperty" String="Plant"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="PlantName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+                <Annotation Term="Core.Immutable"/>
+            </Annotations>
+            <Annotations Target="cds_zpp_ui_arte_rotogravura.ZPP_C_MAIN_REPORTType/OrigBloq" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String=""/>
+                        <PropertyValue Property="CollectionPath" String="ZPP_I_ART_VALUE_HELP_ORIG_BLOQ"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="OrigBloq"/>
+                                    <PropertyValue Property="ValueListProperty" String="CharacteristicValue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.ValueListWithFixedValues"/>
+            </Annotations>
+            <Annotations Target="cds_zpp_ui_arte_rotogravura.ZPP_C_MAIN_REPORTType/OpCartela" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String=""/>
+                        <PropertyValue Property="CollectionPath" String="ZCDS_PP_ORDEM_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="OpCartela"/>
+                                    <PropertyValue Property="ValueListProperty" String="OrderID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Centro"/>
+                                    <PropertyValue Property="ValueListProperty" String="Plant"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zpp_ui_arte_rotogravura.cds_zpp_ui_arte_rotogravura_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="None"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zpp_ui_arte_rotogravura.ZPP_C_MAIN_REPORTType/RevArte" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+                <Annotation Term="Core.Immutable"/>
+            </Annotations>
+            <Annotations Target="cds_zpp_ui_arte_rotogravura.cds_zpp_ui_arte_rotogravura_Entities/ZPP_C_ARTEXMA_ROTO" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>Delete_mc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>Delete_mc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zpp_ui_arte_rotogravura.cds_zpp_ui_arte_rotogravura_Entities/ZPP_C_ART_CONJUGADAS_ROTO" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>Delete_mc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>Delete_mc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zpp_ui_arte_rotogravura.cds_zpp_ui_arte_rotogravura_Entities/ZPP_C_ART_CORES_ROTO" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>Update_mc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>Update_mc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zpp_ui_arte_rotogravura.cds_zpp_ui_arte_rotogravura_Entities/ZPP_C_MAIN_REPORT" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="RequiresFilter" Bool="true"/>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>Delete_mc</PropertyPath>
+                                <PropertyPath>Update_mc</PropertyPath>
+                                <PropertyPath>to_ARTEXMA_oc</PropertyPath>
+                                <PropertyPath>to_CONJUGADAS_oc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="RequiredProperties">
+                            <Collection>
+                                <PropertyPath>Centro</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="Centro"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleValue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_ARTEXMA"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Path="to_ARTEXMA_oc"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_CONJUGADAS"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Path="to_CONJUGADAS_oc"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>Delete_mc</PropertyPath>
+                                <PropertyPath>Update_mc</PropertyPath>
+                                <PropertyPath>to_ARTEXMA_oc</PropertyPath>
+                                <PropertyPath>to_CONJUGADAS_oc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zpp_ui_arte_rotogravura.cds_zpp_ui_arte_rotogravura_Entities/ZPP_I_ART_ARQUIVO_ROTO" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>p_matnr</PropertyPath>
+                                <PropertyPath>p_tipo</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="Parameters"/>
+                                    <PropertyValue Property="FilterRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Filterable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>p_matnr</PropertyPath>
+                                <PropertyPath>p_tipo</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="https://VHVMDWDQWD01.SAP.VALGROUPCO.COM:44381/sap/opu/odata/sap/ZPP_UI_ARTE_ROTOGRAVURA_02/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://VHVMDWDQWD01.SAP.VALGROUPCO.COM:44381/sap/opu/odata/sap/ZPP_UI_ARTE_ROTOGRAVURA_02/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
